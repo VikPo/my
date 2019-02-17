@@ -1,8 +1,13 @@
+<% if user_signed_in? %>
+
+<% else %>
+
 <div class="jumbotron jumbotron-index">
   <h1 class="display-5">Делитесь своими эмоциями</h1>
   <p class="lead">Размещайте фотографии и подписывайтесь на публикации ваших друзей</p>
   <hr class="my-4">
-  <button type="button" class="btn btn-outline-success ">Создать аккаунт</a>
-  <button type="button" class="btn btn-outline-info">Войти</a>
-
+  <%= link_to "Создать аккаунт",  new_user_registration_path, class: "btn btn-outline-success" %>
+  <%= link_to "Войти", new_user_session_path, class: "btn btn-outline-info"%>
 </div>
+
+<% end %>

@@ -21,6 +21,12 @@
   </li>
   <li class="nav-item">
     <span class="nav-link active" >  <%= link_to "О нас", pages_about_path, class:'nav-index' %></span>
+    </li>
+<% if user_signed_in? %>
+    <li class="nav-item">
+      <span class="nav-link active" ><%= link_to "Выйти", destroy_user_session_path, method: :delete, class:'nav-index' %></span>
+    </li>
+<% end %>    
   </ul>
   <p class="notice"><%= notice %></p>
        <p class="alert"><%= alert %></p>
