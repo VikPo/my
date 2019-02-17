@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <div class="container-fluid container-background">
+
+      <div class="container">
+    <ul class="nav">
+  <li class="nav-item">
+    <span class="nav-link active" ><%= link_to "Главная", root_path, class:'nav-index' %></span>
+  </li>
+  <li class="nav-item">
+    <span class="nav-link active" >  <%= link_to "О нас", pages_about_path, class:'nav-index' %></span>
+  </ul>
+      <%= yield %>
+      </div>
+    </div>
+  </body>
+</html>
