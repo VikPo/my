@@ -13,6 +13,7 @@
  *= require_tree .
  *= require_self
  */
+@import url(https://fonts.googleapis.com/css?family=Felipa);
 
 .container-background{
   width: 100%;
@@ -25,26 +26,15 @@
   padding-right: 0;
   padding-left: 0;
 }
+.devise-form{
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%
+  
 
-
-
-$text-color: blue;
-
-.title{
-  color: $text-color;
 }
 
-.introduction{
-  color: $text-color;
-}
 
-.main_part{
-  color: $text-color
-}
-
-.conclusion{
-  color: $text-color;
-}
 
 .jumbotron-index{
   width: 70%;
@@ -59,5 +49,11 @@ $text-color: blue;
 .nav-index:hover,
 .nav-index:active{
   color: #363B90
+}
 
+.text-logo{
+  font-family: 'Felipa', cursive;
+}
+  .landing-logo{
+  font-size: 2rem;
 }
