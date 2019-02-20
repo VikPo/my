@@ -1,6 +1,7 @@
 class PhotosController < ApplicationController
   before_action :set_photo, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!, except: [:index, :show]
+  before_action :owner, only: [:edit, :update, :destroy]
 
   def index
     @photos = Photo.all
@@ -11,7 +12,7 @@ class PhotosController < ApplicationController
   end
 
   def new
-    @photo = Photo.new
+    @photo = current_user.photos.build
   end
 
   def edit
@@ -19,10 +20,10 @@ class PhotosController < ApplicationController
 
 
   def create
-    @photo = Photo.new(photo_params)
+    @photo = current_user.photos.build(photo_params)
 
       if @photo.save
-        redirect_to @photo, notice: 'Photo was successfully created.'
+        redirect_to @photo, notice: 'Фото было успешно создано.'
       else
         render :new
       end
@@ -30,7 +31,7 @@ class PhotosController < ApplicationController
 
   def update
       if @photo.update(photo_params)
-        redirect_to @photo, notice: 'Photo was successfully updated.'
+        redirect_to @photo, notice: 'Фото успешно обновлено.'
       else
         render :edit
       end
@@ -38,10 +39,15 @@ class PhotosController < ApplicationController
 
   def destroy
     @photo.destroy
-      redirect_to photos_url, notice: 'Photo was successfully destroyed.' 
+      redirect_to photos_url, notice: 'Фото было успешно удалено.'
   end
 
   private
+
+    def owner
+      @photo = current_user.photos.find_by(id: params[:id])
+      redirect_to photos_path, notice: "У вас нет разрешение на изменение даной фотографии" if @photo.nil?
+    end
 
     def set_photo
       @photo = Photo.find(params[:id])

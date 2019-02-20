@@ -1,33 +1,31 @@
 <% if user_signed_in? %>
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <span class="nav-link active devise-form" ><%= link_to "Medods", root_path, class:'navbar-brand text-logo landing-logo' %></span>
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark justify-content-end">
+  <span class="nav-link active " ><%= link_to "Мой сайт", root_path, class:'nav-index text-logo landing-logo' %></span>
 
 
-  <div class="collapse navbar-collapse" id="navbarNav">
-        <li class="navbar navbar-expand-lg navbar-light bg-light">
-          <span class="nav-link active" >  <%= link_to "О нас", pages_about_path, class:'nav-link' %></span>
-      </li>
-      <li class="navbar navbar-expand-lg navbar-light bg-light ">
-      <span class="nav-link active" >  <%= link_to current_user.email, edit_user_registration_path, class:'nav-link' %></span>
-      </li>
-      <li class="navbar navbar-expand-lg navbar-light bg-light">
-        <span class="nav-link active" ><%= link_to "Выйти", destroy_user_session_path, method: :delete, class:'nav-link' %></span>
-    </li>
-    </ul>
-  </div>
+      <span class="nav-link active ml-auto" >  <%= link_to "О нас", pages_about_path, class:'nav-index' %></span>
+      <span class="nav-link active "><%= link_to "Фотографии", photos_path, class:'nav-index' %></span  >
+      <span class="nav-link active" >  <%= link_to current_user.email, edit_user_registration_path, class:'nav-index' %></span>
+      <span class="nav-link active" ><%= link_to "Выйти", destroy_user_session_path, method: :delete, class:'nav-index' %></span>
+
+  </nav>
 </nav>
 
   <% else %>
-    <ul class="nav">
-    <li class="nav-item">
-    <span class="nav-link active " ><%= link_to "Medods", root_path, class:'nav-index text-logo landing-logo' %></span>
-    </li>
-    <li class="nav-item">
+  <nav class="navbar navbar-expand-sm bg-dark navbar-dark justify-content-end">
+    <span class="nav-link active " ><%= link_to "Мой сайт", root_path, class:'nav-index text-logo landing-logo' %></span>
+    <span class="nav-link active ml-auto"><%= link_to "Фотографии", photos_path, class:'nav-index' %></span  >
     <span class="nav-link active" >  <%= link_to "О нас", pages_about_path, class:'nav-index' %></span>
-    </li>
 
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse flex-grow-0" id="navbarSupportedContent">
+        <ul class="navbar-nav text-right">
+        </ul>
+    </div>
+</nav>
 
-    </ul>
 
     <% end %>
