@@ -1,0 +1,20 @@
+<%= @user.id %>
+<%= @user.email %>
+<br>
+<% @user.photos.each do |photo| %>
+
+    <div class="card photo-form logo-proz ">
+      <div class="card-header ">
+
+        <%= image_tag photo.image.url, size: '250x250' %><br>
+        <strong><%= photo.description %></strong><br>
+
+          <%= link_to 'Показать', photo %>
+
+        <% if photo.user == current_user %>
+        |  <%= link_to 'Изменить', edit_photo_path(photo) %> |
+          <%= link_to 'Удалить', photo, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <% end %>
+        </div>
+      </div>
+    <% end %>
