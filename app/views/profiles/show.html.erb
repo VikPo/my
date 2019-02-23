@@ -1,12 +1,12 @@
- <%= "Пользователь: " + @user.name  %>
+ <h2><%= "Пользователь: " + @user.name  %></h2><br>
 
 <% if current_user.id == @user.id %>
 <% else %>
 
   <% if current_user.subscription.exists?(friend_id: @user.id) %>
-    <%= link_to "Отписаться", unsubscribe_profile_path(@user) %><br>
+    <%= link_to "Отписаться", unsubscribe_profile_path(@user), class:'btn btn-primary' %><br>
   <% else %>
-    <%= link_to "Подписаться", subscribe_profile_path(@user) %><br>
+    <%= link_to "Подписаться", subscribe_profile_path(@user), class:'btn btn-primary' %><br>
   <% end %>
 
 <% end %>
@@ -17,16 +17,19 @@
     <div class="card photo-form logo-proz ">
       <div class="card-header ">
 
-        <%= image_tag photo.image.url, size: '250x250' %><br>
+        <%= link_to photo, class: 'photo-link' do %>
+        <%= image_tag photo.image.url, size: '250x250' %> <% end %><br>
         <strong><%= photo.description %></strong><br>
 
-          <%= link_to 'Показать', photo %>
-
         <% if photo.user == current_user %>
-        |  <%= link_to 'Изменить', edit_photo_path(photo) %> |
-          <%= link_to 'Удалить', photo, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <%= link_to edit_photo_path(photo) do %>
+        <i class="ion-edit"></i> Изменить <% end %> |
+        <%= link_to photo, method: :delete, data: { confirm: 'Are you sure?' } do %>
+          <i class="ion-trash-b"></i> Удалить <% end %>
         <% end %>
         </div>
       </div>
 
     <% end %>
+
+<strong><%= will_paginate @photos, class:"devise-form", :page_links => false %></strong>
