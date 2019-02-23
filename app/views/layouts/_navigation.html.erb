@@ -11,8 +11,7 @@
 
 
 
-      <span class="nav-link active "><%= link_to "Все фотографии", photos_path, class:'nav-index' %></span  >
-      <span class="nav-link active" >  <%= link_to current_user.email, edit_user_registration_path, class:'nav-index' %></span>
+      <span class="nav-link active" >  <%= link_to current_user.name, edit_user_registration_path, class:'nav-index' %></span>
       <span class="nav-link active" ><%= link_to "Выйти", destroy_user_session_path, method: :delete, class:'nav-index' %></span>
 
   </nav>
